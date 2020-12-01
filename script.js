@@ -1,21 +1,19 @@
 const button = document.querySelector('#button');
 const quoteText = document.querySelector('#quote-text');
+const loader = document.querySelector('#loader');
 
 let tts = window.speechSynthesis;
+
+let toSpeak = new SpeechSynthesisUtterance();
+toSpeak['voiceURI'] = 'Google US English';
+toSpeak['localService'] = true;
+toSpeak.lang = 'en-US';
+
 let textToSpeak = '';
+quoteText.hidden = true;
+button.disabled = true;
 
-button.addEventListener('click', () => {
-	let toSpeak = new SpeechSynthesisUtterance();
-	toSpeak['voiceURI'] = 'Google US English';
-	toSpeak['localService'] = true;
-	toSpeak.lang = 'en-US';
-	getQuote();
-
-	toSpeak.text = textToSpeak; //todo
-	console.log(toSpeak);
-
-	tts.speak(toSpeak);
-});
+getQuote();
 
 //get quote from API
 async function getQuote() {
@@ -34,16 +32,34 @@ async function getQuote() {
 			author = data.quoteAuthor;
 		}
 
-		//Reduce font size for long quotes //todo on css
-		if (data.quoteText.length > 120) {
-			quoteText.classList.add('long-quote');
-		} else {
-			quoteText.classList.remove('long-quote');
-		}
+		textToSpeak = `${data.quoteText}   
+		Author: ${author}`; //to speak
 
-		quoteText.innerText = data.quoteText;
-		textToSpeak = data.quoteText;
+		loader.style.display = 'none';
+		button.disabled = false;
 	} catch (error) {
 		getQuote();
 	}
 }
+
+//btn click
+button.addEventListener('click', () => {
+	if (textToSpeak !== '') {
+		toSpeak.text = textToSpeak;
+
+		tts.speak(toSpeak);
+		quoteText.innerText = textToSpeak;
+		quoteText.hidden = false;
+		button.disabled = true;
+	}
+});
+
+//reading beginning
+//toSpeak.addEventListener('start', () => {});
+
+//reading finished
+toSpeak.addEventListener('end', () => {
+	getQuote();
+	quoteText.hidden = true;
+	loader.style.display = 'flex';
+});
