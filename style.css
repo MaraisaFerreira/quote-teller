@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	background: linear-gradient(360deg, hsl(229, 83%, 60%) 0%, hsla(210, 84%, 61%, 1) 100%);
+	margin: 0;
+}
+
+.container {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#button {
+	cursor: pointer;
+	outline: none;
+	width: 200px;
+	height: 50px;
+	margin-top: 5px;
+	font-family: 'Nerko One', cursive;
+	font-size: 20px;
+	color: white;
+	background: #ff3482;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 15px 5px rgba(0, 0, 0, 0.3);
+}
+
+#button:hover {
+	filter: brightness(95%);
+}
+
+#button:active {
+	transform: scale(0.98);
+}
+
+#button:disabled {
+	cursor: default;
+	filter: brightness(30%);
+}
+
+.dove {
+	width: 50%;
+}
+
+.quote-text {
+	margin-top: 10px;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.08);
+	border-radius: 5px;
+	font-family: 'Indie Flower', cursive;
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+
+/* Media Query for tablet or smaller */
+@media screen and (max-width: 1000px) {
+}
