@@ -78,7 +78,7 @@ body {
 	font-style: italic;
 }
 
-/* Media Query for tablet or smaller */
+/* Media Query - p/ telas menores q 600px */
 @media screen and (max-width: 600px) {
 	#button {
 		width: 150px;
