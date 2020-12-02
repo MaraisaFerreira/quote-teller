@@ -44,7 +44,7 @@ body {
 
 #button:disabled {
 	cursor: default;
-	background: rgba(255, 52, 130, 0.5);
+	background: rgba(255, 51, 129, 0.5);
 }
 
 .dove {
@@ -65,41 +65,11 @@ body {
 }
 
 .loader-container {
+	margin-top: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
-
-.loader {
-	margin-top: 10px;
-	border: 5px solid rgba(252, 249, 81, 0.6);
-	border-radius: 50%;
-	border-top: 5px solid rgba(0, 174, 255, 0.6);
-	border-right: 5px solid rgba(8, 255, 8, 0.6);
-	border-bottom: 5px solid rgba(255, 0, 0, 0.6);
-	width: 25px;
-	height: 25px;
-	-webkit-animation: spin 2s linear infinite;
-	animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
 }
 
 .loader-text {
