@@ -15,7 +15,6 @@ button.disabled = true;
 
 getQuote();
 
-//obtém as citações da API
 async function getQuote() {
 	const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 	const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
@@ -25,7 +24,6 @@ async function getQuote() {
 		const data = await response.json();
 		let author = '';
 
-		//Add Unknown se o autor estiver em branco
 		if (data.quoteAuthor === '') {
 			author = 'Unknown';
 		} else {
@@ -42,7 +40,6 @@ async function getQuote() {
 	}
 }
 
-//btn click
 button.addEventListener('click', () => {
 	if (textToSpeak !== '') {
 		toSpeak.text = textToSpeak;
@@ -54,10 +51,8 @@ button.addEventListener('click', () => {
 	}
 });
 
-//começo da leitura
 //toSpeak.addEventListener('start', () => {});
 
-//leitura finalizada
 toSpeak.addEventListener('end', () => {
 	getQuote();
 	quoteText.hidden = true;
